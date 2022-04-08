@@ -61,6 +61,7 @@ bool CatDatabase::deleteCat(Cat* catToDelete) {
     }
     if (catDatabaseHeadPointer == catToDelete) {
         catDatabaseHeadPointer = catDatabaseHeadPointer->next;
+        delete catToDelete;
         return true;
     }
     Cat *currentCat = catDatabaseHeadPointer;
@@ -68,6 +69,7 @@ bool CatDatabase::deleteCat(Cat* catToDelete) {
         currentCat = currentCat->next;
     }
     currentCat->next = catToDelete->next;
+    delete catToDelete;
     return true;
 }
 

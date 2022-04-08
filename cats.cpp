@@ -12,7 +12,7 @@
 using namespace std;
 
 Cat::Cat() {
-    name = new char[MAX_CAT_NAME_LEN];
+    name = (char*) "";
     gender = UNKNOWN_GENDER;
     breed = UNKNOWN_BREED;
     isCatFixed = false;
@@ -89,11 +89,12 @@ bool Cat::setWeight(Weight newWeight) {
 }
 
 Cat::~Cat() {
-    delete[] name;
+    name = (char*) "";
     Cat::setGender(UNKNOWN_GENDER);
     Cat::setBreed(UNKNOWN_BREED);
     Cat::isCatFixed = false;
     Cat::weight = 0;
+    Cat::next = nullptr;
 }
 
 bool Cat::print() const noexcept {
