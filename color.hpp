@@ -14,16 +14,13 @@
 
 #include <iostream>
 
-enum class Color {
-	UNKNOWN_COLOR = 0,
-	BLACK,
-	WHITE,
-	RED,
-	BLUE,
-	GREEN,
-	PINK
+enum class Color
+{
+	UNKNOWN_COLOR = 0, BLACK, BROWN, WHITE,
+	RED, BLUE, GREEN, GINGER,
+	CREAM, CINNAMON, CALICO
 };
 
-std::ostream &operator<<(std::ostream &lhs_stream, const Color &rhs_Color);
+std::ostream& operator<<(std::ostream& lhs_stream, const Color& rhs_Color);
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_2__COLOR_HPP_

@@ -26,15 +26,18 @@
 
 
 class Node {
+
+	friend class List;
+	friend class SinglyLinkedList;
+
 protected:
-    Node *next;
+	Node *next;
 
     /// A generic comparison based on the memory address of the object.
     /// Functions (like sorting) may want to compare two nodes. This is a good default comparison. Other functions may choose to implement their own, more interesting, comparison functions and they can override the > operator.
     /// This allows us to separate the algorithm from the data. We can code an algorithm to operate on a virtual Node > operator and allow the descendants of Node to override > and implement their own ordering.
     /// @returns true if node1 > node2
     static bool compareByAddress(const Node *node1, const Node *node2);
-
 public:
     /// Output the contents of this object.
     /// Reimplemented in Animal, Cat, and Mammal.
@@ -52,6 +55,8 @@ public:
     /// @param rightSide The this member is the left side of the > operator. rightSide is the right side of the > operator.
     /// @returns true if leftSide > rightSide
     virtual bool operator>(const Node &rightSide);
+
+
 };
 
 

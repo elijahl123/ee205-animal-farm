@@ -16,12 +16,7 @@
 
 #include "mammal.hpp"
 #include <iostream>
-#define MAX_CATS 1024
 #define MAX_CAT_NAME_LEN 30
-#define UNKNOWN_WEIGHT -1
-
-/// Format a line for printing the members of a class
-#define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
 
 class Cat : public Mammal {
  protected:
@@ -31,8 +26,8 @@ class Cat : public Mammal {
 	static const std::string SPECIES_NAME;
 	static const Weight::t_weight MAX_WEIGHT;
  public:
-	Cat(const std::string &newName);
-	Cat(const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const Weight::t_weight newWeight);
+	explicit Cat(const std::string &newName);
+	Cat(const std::string &newName, Color newColor, bool newIsFixed, Gender newGender, Weight::t_weight newWeight);
 
 	std::string getName() const noexcept;
 	void setName(const std::string &newName);
