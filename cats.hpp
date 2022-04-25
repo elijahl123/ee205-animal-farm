@@ -14,74 +14,35 @@
 #ifndef EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CATS_HPP
 #define EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CATS_HPP
 
+#include "mammal.hpp"
+#include <iostream>
 #define MAX_CATS 1024
 #define MAX_CAT_NAME_LEN 30
 #define UNKNOWN_WEIGHT -1
 
 /// Format a line for printing the members of a class
-#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
+#define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
 
+class Cat : public Mammal {
+ protected:
+	std::string name;
+	bool isCatFixed;
+ public:
+	static const std::string SPECIES_NAME;
+	static const Weight::t_weight MAX_WEIGHT;
+ public:
+	Cat(const std::string &newName);
+	Cat(const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const Weight::t_weight newWeight);
 
-typedef float Weight;
+	std::string getName() const noexcept;
+	void setName(const std::string &newName);
+	bool isFixed() const noexcept;
+	void fixCat() noexcept;
+	std::string speak() const noexcept override;
+	void dump() const noexcept override;
+	bool validate() const noexcept override;
 
-enum gender {
-    UNKNOWN_GENDER,
-    MALE,
-    FEMALE
+	static bool validateName(const std::string &newName);
 };
-
-enum breed {
-    UNKNOWN_BREED,
-    MAINE_COON,
-    MANX,
-    SHORTHAIR,
-    PERSIAN,
-    SPHYNX
-};
-
-enum color {
-    BLACK,
-    WHITE,
-    RED,
-    BLUE,
-    GREEN,
-    PINK
-};
-
-class Cat {
-private:
-    char* name;
-    enum gender gender;
-    enum breed breed;
-    bool isCatFixed;
-    Weight weight;
-public:
-    Cat *next;
-public:
-    const char* getName() const;
-    enum gender getGender() const;
-    enum breed  getBreed() const;
-    bool        getIsCatFixed() const;
-    Weight      getWeight() const;
-
-    bool        setName(char *name);
-    bool        fixCat();
-    bool        setWeight(Weight weight);
-
-public:
-    Cat();
-    Cat(char*, enum gender, enum breed, Weight);
-
-    virtual ~Cat();
-
-protected:
-    bool setGender(enum gender gender);
-    bool setBreed(enum breed newBreed);
-
-public:
-    bool print() const noexcept;
-    bool validate() const noexcept;
-};
-
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CATS_HPP

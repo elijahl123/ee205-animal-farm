@@ -10,9 +10,9 @@
 /// A gender... for educational use only. This is not intended to be
 /// inclusive of all possible genders
 enum class Gender {
-    UNKNOWN_GENDER = 0,
-    MALE,
-    FEMALE
+	UNKNOWN_GENDER = 0,
+	MALE,
+	FEMALE
 };
 
 /// Output Gender as a formatted string
@@ -24,7 +24,6 @@ enum class Gender {
 /// `rhs` stands for Right Hand Side and means the right
 /// side of the `<<` operator.
 /// @return `Unknown gender`, `Female` or `Male`.
-inline std::ostream& operator<<( std::ostream& lhs_stream, const Gender& rhs_Gender );
-
+std::ostream &operator<<(std::ostream &lhs_stream, const Gender &rhs_Gender);
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_2_GENDER_HPP
